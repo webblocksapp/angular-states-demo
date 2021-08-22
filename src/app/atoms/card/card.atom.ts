@@ -1,14 +1,31 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, ElementRef, HostBinding, Input } from '@angular/core';
+import { Mixin } from '@app/decorators';
+import {
+  DefaultCssClass,
+  DefaultCssClassTrait,
+} from '@app/traits/default-css-class';
+import { Styling, StylingTrait } from '@app/traits/styling';
+import * as CSS from 'csstype';
 
 @Component({
   selector: 'card',
   template: ` <ng-content></ng-content> `,
   styles: [``],
 })
-export class CardAtom {
+@Mixin([StylingTrait, DefaultCssClassTrait])
+export class CardAtom implements Styling, DefaultCssClass {
   @HostBinding()
   @Input()
-  set class(value: string) {
-    this.class += ` card ${value} `;
+  class: string;
+
+  @Input() style: CSS.Properties;
+  defaultCssClass: string = 'card';
+
+  initDefaultDisplay: () => void;
+  initDefaultCssClass: () => void;
+
+  constructor(private elRef: ElementRef) {
+    this.initDefaultDisplay();
+    this.initDefaultCssClass();
   }
 }

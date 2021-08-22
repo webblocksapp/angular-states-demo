@@ -6,18 +6,9 @@ import { ProductRepository } from '@repositories';
   selector: 'products',
   template: `
     <default-template>
-      <box row>
-        <box col>
-          <box pt="1">1</box>
-        </box>
-        <box col>
-          <box pr="2">2</box>
-        </box>
-        <box col>
-          <box pb="3">3</box>
-        </box>
-        <box col>
-          <box [xs]="11" pl="4">4</box>
+      <box [style]="{}" row [spacing]="4">
+        <box *ngFor="let product of products" [xs]="12" [md]="4">
+          <card> Hello world </card>
         </box>
       </box>
     </default-template>
@@ -25,9 +16,9 @@ import { ProductRepository } from '@repositories';
   styles: [``],
 })
 export class ProductsScreen {
-  public products: Product[] = [];
-  public loading: boolean;
-  public error: string;
+  products: Product[] = [];
+  loading: boolean;
+  error: string;
 
   constructor(private productRepository: ProductRepository) {
     this.productRepository.subscribe(({ products, loading, error }) => {

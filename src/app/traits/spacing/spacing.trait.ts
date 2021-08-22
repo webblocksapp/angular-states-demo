@@ -1,33 +1,40 @@
 import { ColSize, PaddingSize } from '@app-types';
-import { Spacing } from '@app/electrons/spacing/spacing';
+import { Spacing } from '@app/traits/spacing/spacing';
+import { GuttersSize } from '@app/types/gutters-size';
 
-export class SpacingElectron implements Spacing {
-  public class: string;
+export class SpacingTrait implements Spacing {
+  class: string;
 
+  /**
+   * Column properties
+   */
   set xs(value: ColSize) {
     this.class += ` col-xs-${value} `;
   }
 
   set sm(value: ColSize) {
-    this.class += ` col-${value} `;
+    this.class += ` col-sm-${value} `;
   }
 
   set md(value: ColSize) {
-    this.class += ` col-${value} `;
+    this.class += ` col-md-${value} `;
   }
 
   set lg(value: ColSize) {
-    this.class += ` col-${value} `;
+    this.class += ` col-lg-${value} `;
   }
 
   set xl(value: ColSize) {
-    this.class += ` col-${value} `;
+    this.class += ` col-xl-${value} `;
   }
 
   set xxl(value: ColSize) {
-    this.class += ` col-${value} `;
+    this.class += ` col-xxl-${value} `;
   }
 
+  /**
+   * Padding properties
+   */
   set padding(value: PaddingSize) {
     if (!this.p) this.class += ` p-${value}`;
   }
@@ -48,6 +55,14 @@ export class SpacingElectron implements Spacing {
     if (!this.pl) this.class += ` ps-${value}`;
   }
 
+  set paddingX(value: PaddingSize) {
+    if (!this.px) this.class += ` px-${value}`;
+  }
+
+  set paddingY(value: PaddingSize) {
+    if (!this.py) this.class += ` py-${value}`;
+  }
+
   set p(value: PaddingSize) {
     if (!this.padding) this.class += ` p-${value}`;
   }
@@ -66,5 +81,28 @@ export class SpacingElectron implements Spacing {
 
   set pl(value: PaddingSize) {
     if (!this.paddingLeft) this.class += ` ps-${value}`;
+  }
+
+  set px(value: PaddingSize) {
+    if (!this.paddingX) this.class += ` px-${value}`;
+  }
+
+  set py(value: PaddingSize) {
+    if (!this.paddingY) this.class += ` py-${value}`;
+  }
+
+  /**
+   * Gutters properties
+   */
+  set spacing(value: GuttersSize) {
+    this.class += ` g-${value}`;
+  }
+
+  set spacingX(value: GuttersSize) {
+    this.class += ` gx-${value}`;
+  }
+
+  set spacingY(value: GuttersSize) {
+    this.class += ` gy-${value}`;
   }
 }

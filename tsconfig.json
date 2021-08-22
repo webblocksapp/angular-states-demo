@@ -19,10 +19,11 @@
     "lib": ["es2018", "dom"],
     "strictPropertyInitialization": false,
     "paths": {
-      "@app/*": ["src/app/*"],
       "@apis": ["src/app/apis/index"],
+      "@app-types": ["src/app/types/index"],
+      "@app/*": ["src/app/*"],
       "@atoms/*": ["src/app/atoms/*"],
-      "@electrons/*": ["src/app/electrons/*"],
+      "@decorators": ["src/app/decorators/index"],
       "@env": ["src/environments/environment"],
       "@functions": ["src/app/utils/functions"],
       "@interfaces": ["src/app/interfaces/index"],
@@ -32,7 +33,7 @@
       "@screens/*": ["src/app/screens/*"],
       "@services/*": ["src/app/apis/*"],
       "@templates/*": ["src/app/templates/*"],
-      "@app-types": ["src/app/types/index"]
+      "@traits/*": ["src/app/traits/*"]
     }
   },
   "angularCompilerOptions": {

@@ -1,20 +1,25 @@
-import { Component, HostBinding, Input } from '@angular/core';
-import { SpacingElectron, Spacing } from '@app/electrons/spacing';
-import { Styling, StylingElectron } from '@app/electrons/styling';
+import { Component, ElementRef, HostBinding, Input } from '@angular/core';
+import { Mixin } from '@decorators';
+import { SpacingTrait, Spacing } from '@app/traits/spacing';
+import { Styling, StylingTrait } from '@app/traits/styling';
 import { ColSize, PaddingSize } from '@app/types';
-import { applyMixins } from '@functions';
 import * as CSS from 'csstype';
+import { GuttersSize } from '@app/types/gutters-size';
 
 @Component({
   selector: 'box',
   template: `<ng-content></ng-content>`,
 })
+@Mixin([SpacingTrait, StylingTrait])
 export class BoxAtom implements Spacing, Styling {
+  /**
+   * Declared trait properties
+   */
   @HostBinding()
   @Input()
   class: string = '';
-  style: CSS.Properties;
 
+  @Input() style: CSS.Properties;
   @Input() xs: ColSize;
   @Input() sm: ColSize;
   @Input() md: ColSize;
@@ -31,8 +36,17 @@ export class BoxAtom implements Spacing, Styling {
   @Input() pr: PaddingSize;
   @Input() pb: PaddingSize;
   @Input() pl: PaddingSize;
+  @Input() paddingX: PaddingSize;
+  @Input() paddingY: PaddingSize;
+  @Input() px: PaddingSize;
+  @Input() py: PaddingSize;
+  @Input() spacing: GuttersSize;
+  @Input() spacingX: GuttersSize;
+  @Input() spacingY: GuttersSize;
 
-  constructor() {
-    applyMixins(BoxAtom, [SpacingElectron, StylingElectron]);
+  initDefaultDisplay: () => void;
+
+  constructor(private elRef: ElementRef) {
+    this.initDefaultDisplay();
   }
 }

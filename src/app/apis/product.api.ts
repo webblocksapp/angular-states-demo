@@ -9,7 +9,7 @@ import { environment as env } from '@env';
 export class ProductApi {
   constructor(private http: HttpClient) {}
 
-  public findAll() {
+  findAll() {
     return this.http.get<Product[]>(`${env.apiRootLocal}/products`);
   }
 }

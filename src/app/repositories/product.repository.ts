@@ -27,13 +27,13 @@ export class ProductRepository {
     this.stateSubject.next(!this.stateSubject.getValue());
   }
 
-  public subscribe(callBack: (state: ProductRepositoryState) => void) {
+  subscribe(callBack: (state: ProductRepositoryState) => void) {
     this.state$ = this.stateSubject.subscribe(() => {
       callBack(this.state);
     });
   }
 
-  public async findAll() {
+  async findAll() {
     try {
       this.state.loading = true;
       this.emitChange();
@@ -46,23 +46,23 @@ export class ProductRepository {
     }
   }
 
-  public async create(product: Product) {
+  async create(product: Product) {
     this.state.products.push(product);
     this.emitChange();
   }
 
-  public async update(id: number, product: Product) {
+  async update(id: number, product: Product) {
     const index = this.state.products.findIndex((item) => item.id === id);
     this.state.products[index] = product;
     this.emitChange();
   }
 
-  public async delete(id: number) {
+  async delete(id: number) {
     this.state.products = this.state.products.filter((item) => item.id !== id);
     this.emitChange();
   }
 
-  public unsubscribe() {
+  unsubscribe() {
     this.state$.unsubscribe();
   }
 }
