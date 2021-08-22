@@ -2,26 +2,20 @@ import { ElementRef } from '@angular/core';
 import { DefaultCssClass } from './default-css-class';
 
 export class DefaultCssClassTrait implements DefaultCssClass {
-  defaultCssClass: string;
+  private defaultCssClass: string;
   private elRef: ElementRef;
 
   set class(_value: string) {
-    this.initDefaultCssClass();
+    this.initDefaultCssClass(this.elRef, this.defaultCssClass);
   }
 
   /**
    * This trait method must be called inside the constructor of the component
    * that implemented the DefaultCssClassTrait to take effect.
    */
-  initDefaultCssClass() {
-    if (!this.elRef) {
-      throw 'elRef must be declared as private on component constructor.';
-    }
-
-    if (!this.defaultCssClass) {
-      throw 'defaultCssClass must be initialized with a default value.';
-    }
-
+  initDefaultCssClass(hostElRef: ElementRef, className: string) {
+    this.elRef = hostElRef;
+    this.defaultCssClass = className;
     this.elRef.nativeElement.classList.add(this.defaultCssClass);
   }
 }

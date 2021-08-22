@@ -4,6 +4,8 @@ import {
   DefaultCssClass,
   DefaultCssClassTrait,
 } from '@app/traits/default-css-class';
+import { Display } from '@app/traits/display/display';
+import { DisplayTrait } from '@app/traits/display/display.trait';
 import { Styling, StylingTrait } from '@app/traits/styling';
 import * as CSS from 'csstype';
 
@@ -11,8 +13,8 @@ import * as CSS from 'csstype';
   selector: 'card-body',
   template: `<ng-content></ng-content>`,
 })
-@Mixin([StylingTrait, DefaultCssClassTrait])
-export class CardBodyAtom implements Styling, DefaultCssClass {
+@Mixin([StylingTrait, DefaultCssClassTrait, DisplayTrait])
+export class CardBodyAtom implements Styling, DefaultCssClass, Display {
   /**
    * Declared trait properties
    */
@@ -21,13 +23,18 @@ export class CardBodyAtom implements Styling, DefaultCssClass {
   class: string;
 
   @Input() style: CSS.Properties;
-  defaultCssClass: string = 'card-body';
+  @Input() display: CSS.Properties['display'];
 
-  initDefaultDisplay: () => void;
-  initDefaultCssClass: () => void;
+  initElRef: (elRef: ElementRef) => void;
+  initDefaultDisplay: (
+    hostElRef: ElementRef,
+    display?: CSS.Properties['display']
+  ) => void;
+  initDefaultCssClass: (hostElRef: ElementRef, className: string) => void;
 
   constructor(private elRef: ElementRef) {
-    this.initDefaultDisplay();
-    this.initDefaultCssClass();
+    this.initElRef(this.elRef);
+    this.initDefaultDisplay(this.elRef, 'block');
+    this.initDefaultCssClass(this.elRef, 'card-body');
   }
 }

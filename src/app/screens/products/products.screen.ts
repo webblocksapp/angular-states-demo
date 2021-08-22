@@ -6,9 +6,13 @@ import { ProductRepository } from '@repositories';
   selector: 'products',
   template: `
     <default-template>
-      <box [style]="{}" row [spacing]="4">
+      <box row [spacing]="4">
         <box *ngFor="let product of products" [xs]="12" [md]="4">
-          <card> Hello world </card>
+          <card>
+            <card-body>
+              <box display="flex">Test</box>
+            </card-body>
+          </card>
         </box>
       </box>
     </default-template>

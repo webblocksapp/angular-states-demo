@@ -1,5 +1,6 @@
+import { ElementRef } from '@angular/core';
+
 export interface DefaultCssClass {
   class: string;
-  defaultCssClass: string;
-  initDefaultCssClass: () => void;
+  initDefaultCssClass: (hostElRef: ElementRef, className: string) => void;
 }

@@ -5,13 +5,15 @@ import { Styling, StylingTrait } from '@app/traits/styling';
 import { ColSize, PaddingSize } from '@app/types';
 import * as CSS from 'csstype';
 import { GuttersSize } from '@app/types/gutters-size';
+import { DisplayTrait } from '@app/traits/display/display.trait';
+import { Display } from '@app/traits/display/display';
 
 @Component({
   selector: 'box',
   template: `<ng-content></ng-content>`,
 })
-@Mixin([SpacingTrait, StylingTrait])
-export class BoxAtom implements Spacing, Styling {
+@Mixin([SpacingTrait, StylingTrait, DisplayTrait])
+export class BoxAtom implements Spacing, Styling, Display {
   /**
    * Declared trait properties
    */
@@ -43,10 +45,16 @@ export class BoxAtom implements Spacing, Styling {
   @Input() spacing: GuttersSize;
   @Input() spacingX: GuttersSize;
   @Input() spacingY: GuttersSize;
+  @Input() display: CSS.Properties['display'];
 
-  initDefaultDisplay: () => void;
+  initElRef: (elRef: ElementRef) => void;
+  initDefaultDisplay: (
+    hostElRef: ElementRef,
+    display?: CSS.Properties['display']
+  ) => void;
 
   constructor(private elRef: ElementRef) {
-    this.initDefaultDisplay();
+    this.initElRef(this.elRef);
+    this.initDefaultDisplay(this.elRef, 'block');
   }
 }
