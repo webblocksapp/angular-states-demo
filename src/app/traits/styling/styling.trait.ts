@@ -24,7 +24,7 @@ export class StylingTrait implements Styling {
    * Trait methods must be called inside the constructor of the component
    * that implemented the StylingTrait to take effect.
    */
-  initElRef(elRef: ElementRef): void {
-    this.elRef = elRef;
+  initElRef(hostElRef: ElementRef): void {
+    this.elRef = hostElRef;
   }
 }

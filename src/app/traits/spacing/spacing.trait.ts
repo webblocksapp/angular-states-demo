@@ -1,108 +1,123 @@
+import { ElementRef } from '@angular/core';
 import { ColSize, PaddingSize } from '@app-types';
 import { Spacing } from '@app/traits/spacing/spacing';
 import { GuttersSize } from '@app/types/gutters-size';
+import { overrideCssClass } from '@app/utils/functions';
 
 export class SpacingTrait implements Spacing {
   class: string;
+  private elRef: ElementRef;
 
   /**
    * Column properties
    */
   set xs(value: ColSize) {
-    this.class += ` col-xs-${value} `;
+    this.setSpacingClass('col-xs-', value);
   }
 
   set sm(value: ColSize) {
-    this.class += ` col-sm-${value} `;
+    this.setSpacingClass('col-sm-', value);
   }
 
   set md(value: ColSize) {
-    this.class += ` col-md-${value} `;
+    this.setSpacingClass('col-md-', value);
   }
 
   set lg(value: ColSize) {
-    this.class += ` col-lg-${value} `;
+    this.setSpacingClass('col-lg-', value);
   }
 
   set xl(value: ColSize) {
-    this.class += ` col-xl-${value} `;
+    this.setSpacingClass('col-xl-', value);
   }
 
   set xxl(value: ColSize) {
-    this.class += ` col-xxl-${value} `;
+    this.setSpacingClass('col-xxl-', value);
   }
 
   /**
    * Padding properties
    */
   set padding(value: PaddingSize) {
-    if (!this.p) this.class += ` p-${value}`;
+    this.setSpacingClass('p-', value);
   }
 
   set paddingTop(value: PaddingSize) {
-    if (!this.pt) this.class += ` pt-${value}`;
+    this.setSpacingClass('pt-', value);
   }
 
   set paddingRight(value: PaddingSize) {
-    if (!this.pr) this.class += ` pe-${value}`;
+    this.setSpacingClass('pe-', value);
   }
 
   set paddingBottom(value: PaddingSize) {
-    if (!this.pb) this.class += ` pb-${value}`;
+    this.setSpacingClass('pb-', value);
   }
 
   set paddingLeft(value: PaddingSize) {
-    if (!this.pl) this.class += ` ps-${value}`;
+    this.setSpacingClass('ps-', value);
   }
 
   set paddingX(value: PaddingSize) {
-    if (!this.px) this.class += ` px-${value}`;
+    this.setSpacingClass('px-', value);
   }
 
   set paddingY(value: PaddingSize) {
-    if (!this.py) this.class += ` py-${value}`;
+    this.setSpacingClass('py-', value);
   }
 
   set p(value: PaddingSize) {
-    if (!this.padding) this.class += ` p-${value}`;
+    this.setSpacingClass('p-', value);
   }
 
   set pt(value: PaddingSize) {
-    if (!this.paddingTop) this.class += ` pt-${value}`;
+    this.setSpacingClass('pt-', value);
   }
 
   set pr(value: PaddingSize) {
-    if (!this.paddingRight) this.class += ` pe-${value}`;
+    this.setSpacingClass('pr-', value);
   }
 
   set pb(value: PaddingSize) {
-    if (!this.paddingBottom) this.class += ` pb-${value}`;
+    this.setSpacingClass('pb-', value);
   }
 
   set pl(value: PaddingSize) {
-    if (!this.paddingLeft) this.class += ` ps-${value}`;
+    this.setSpacingClass('pl-', value);
   }
 
   set px(value: PaddingSize) {
-    if (!this.paddingX) this.class += ` px-${value}`;
+    this.setSpacingClass('px-', value);
   }
 
   set py(value: PaddingSize) {
-    if (!this.paddingY) this.class += ` py-${value}`;
+    this.setSpacingClass('py-', value);
   }
 
   /**
    * Gutters properties
    */
   set spacing(value: GuttersSize) {
-    this.class += ` g-${value}`;
+    this.setSpacingClass('g-', value);
   }
 
   set spacingX(value: GuttersSize) {
-    this.class += ` gx-${value}`;
+    this.setSpacingClass('gx-', value);
   }
 
   set spacingY(value: GuttersSize) {
-    this.class += ` gy-${value}`;
+    this.setSpacingClass('gy-', value);
+  }
+
+  /**
+   * Trait methods must be called inside the constructor of the component
+   * that implemented the StylingTrait to take effect.
+   */
+  initElRef(hostElRef: ElementRef): void {
+    this.elRef = hostElRef;
+  }
+
+  private setSpacingClass(prefix: string, value: any) {
+    overrideCssClass(this.elRef, new RegExp(prefix), `${prefix}${value}`);
   }
 }

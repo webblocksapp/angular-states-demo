@@ -1,4 +1,5 @@
 import { ElementRef } from '@angular/core';
+import { overrideCssClass } from '@app/utils/functions';
 import * as CSS from 'csstype';
 import { Display } from './display';
 
@@ -15,20 +16,7 @@ export class DisplayTrait implements Display {
   }
 
   private setDisplay(display: CSS.Properties['display']) {
-    this.cleanOldDisplay();
-    this.elRef.nativeElement.classList.add(`d-${display}`);
-  }
-
-  private cleanOldDisplay() {
-    const currentClasses = this.elRef.nativeElement.classList
-      .toString()
-      .split(' ');
-
-    const currentDisplay = currentClasses.find((className: string) =>
-      className.match(/^d-/)
-    );
-
-    this.elRef.nativeElement.classList.remove(`${currentDisplay}`);
+    overrideCssClass(this.elRef, new RegExp(/^d-/), `d-${display}`);
   }
 
   /**

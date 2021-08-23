@@ -1,3 +1,4 @@
+import { ElementRef } from '@angular/core';
 import { ColSize, PaddingSize } from '@app-types';
 import { GuttersSize } from '@app/types/gutters-size';
 
@@ -26,4 +27,5 @@ export interface Spacing {
   spacing: GuttersSize;
   spacingX: GuttersSize;
   spacingY: GuttersSize;
+  initElRef: (hostElRef: ElementRef) => void;
 }
