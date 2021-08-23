@@ -1,7 +1,7 @@
 import { ElementRef } from '@angular/core';
 import { overrideCssClass } from '@app/utils/functions';
 import * as CSS from 'csstype';
-import { Display } from './display';
+import { Display } from './display.interface';
 
 /**
  * Trait for setting the component display.

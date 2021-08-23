@@ -5,8 +5,7 @@ import { Styling, StylingTrait } from '@app/traits/styling';
 import { ColSize, PaddingSize } from '@app/types';
 import * as CSS from 'csstype';
 import { GuttersSize } from '@app/types/gutters-size';
-import { DisplayTrait } from '@app/traits/display/display.trait';
-import { Display } from '@app/traits/display/display';
+import { Display, DisplayTrait } from '@app/traits/display';
 
 @Component({
   selector: 'box',

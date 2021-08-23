@@ -4,8 +4,7 @@ import {
   DefaultCssClass,
   DefaultCssClassTrait,
 } from '@app/traits/default-css-class';
-import { Display } from '@app/traits/display/display';
-import { DisplayTrait } from '@app/traits/display/display.trait';
+import { Display, DisplayTrait } from '@app/traits/display';
 import { Styling, StylingTrait } from '@app/traits/styling';
 import * as CSS from 'csstype';
 

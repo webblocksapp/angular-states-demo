@@ -1,2 +1,2 @@
 export * from './styling.trait';
-export * from './styling';
+export * from './styling.interface';

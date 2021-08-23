@@ -1,2 +1,2 @@
 export * from './spacing.trait';
-export * from './spacing';
+export * from './spacing.interface';

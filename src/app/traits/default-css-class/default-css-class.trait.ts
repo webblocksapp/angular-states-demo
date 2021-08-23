@@ -1,5 +1,5 @@
 import { ElementRef } from '@angular/core';
-import { DefaultCssClass } from './default-css-class';
+import { DefaultCssClass } from './default-css-class.interface';
 
 export class DefaultCssClassTrait implements DefaultCssClass {
   private defaultCssClass: string;

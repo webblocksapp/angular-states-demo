@@ -1,6 +1,6 @@
 import { ElementRef } from '@angular/core';
 import { ColSize, PaddingSize } from '@app-types';
-import { Spacing } from '@app/traits/spacing/spacing';
+import { Spacing } from '@app/traits/spacing';
 import { GuttersSize } from '@app/types/gutters-size';
 import { overrideCssClass } from '@app/utils/functions';
 

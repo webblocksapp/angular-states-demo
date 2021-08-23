@@ -1,7 +1,7 @@
 import { ElementRef } from '@angular/core';
 import * as CSS from 'csstype';
 import styleToCss from 'style-object-to-css-string';
-import { Styling } from './styling';
+import { Styling } from './styling.interface';
 
 /**
  * Trait for setting the component style.
