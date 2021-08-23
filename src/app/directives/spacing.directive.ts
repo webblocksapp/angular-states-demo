@@ -26,6 +26,20 @@ import { overrideCssClass } from '@app/utils/functions';
     [pl],
     [px],
     [py],
+    [margin],
+    [marginTop],
+    [marginRight],
+    [marginBottom],
+    [marginLeft],
+    [marginX],
+    [marginY],
+    [m],
+    [mt],
+    [mr],
+    [mb],
+    [ml],
+    [mx],
+    [my],
     [spacing],
     [spacingX],
     [spacingY]
@@ -136,6 +150,79 @@ export class SpacingDirective {
   @Input()
   set py(value: PaddingSize) {
     this.setSpacingClass('py-', value);
+  }
+
+  /**
+   * Margin properties
+   */
+  @Input()
+  set margin(value: PaddingSize) {
+    this.setSpacingClass('m-', value);
+  }
+
+  @Input()
+  set marginTop(value: PaddingSize) {
+    this.setSpacingClass('mt-', value);
+  }
+
+  @Input()
+  set marginRight(value: PaddingSize) {
+    this.setSpacingClass('me-', value);
+  }
+
+  @Input()
+  set marginBottom(value: PaddingSize) {
+    this.setSpacingClass('mb-', value);
+  }
+
+  @Input()
+  set marginLeft(value: PaddingSize) {
+    this.setSpacingClass('ms-', value);
+  }
+
+  @Input()
+  set marginX(value: PaddingSize) {
+    this.setSpacingClass('mx-', value);
+  }
+
+  @Input()
+  set marginY(value: PaddingSize) {
+    this.setSpacingClass('my-', value);
+  }
+
+  @Input()
+  set m(value: PaddingSize) {
+    this.setSpacingClass('m-', value);
+  }
+
+  @Input()
+  set mt(value: PaddingSize) {
+    this.setSpacingClass('mt-', value);
+  }
+
+  @Input()
+  set mr(value: PaddingSize) {
+    this.setSpacingClass('mr-', value);
+  }
+
+  @Input()
+  set mb(value: PaddingSize) {
+    this.setSpacingClass('mb-', value);
+  }
+
+  @Input()
+  set ml(value: PaddingSize) {
+    this.setSpacingClass('ml-', value);
+  }
+
+  @Input()
+  set mx(value: PaddingSize) {
+    this.setSpacingClass('mx-', value);
+  }
+
+  @Input()
+  set my(value: PaddingSize) {
+    this.setSpacingClass('my-', value);
   }
 
   /**

@@ -11,7 +11,7 @@ import { ProductRepository } from '@repositories';
           <card>
             <card-body>
               <box display="flex">
-                <box [pt]="3">A</box>
+                <box>A</box>
                 <box>B</box>
               </box>
             </card-body>
