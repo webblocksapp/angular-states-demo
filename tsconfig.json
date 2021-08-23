@@ -24,6 +24,7 @@
       "@app/*": ["src/app/*"],
       "@atoms/*": ["src/app/atoms/*"],
       "@decorators": ["src/app/decorators/index"],
+      "@directives/*": ["src/app/directives/*"],
       "@env": ["src/environments/environment"],
       "@functions": ["src/app/utils/functions"],
       "@interfaces": ["src/app/interfaces/index"],
@@ -32,8 +33,7 @@
       "@repositories": ["src/app/repositories/index"],
       "@screens/*": ["src/app/screens/*"],
       "@services/*": ["src/app/apis/*"],
-      "@templates/*": ["src/app/templates/*"],
-      "@traits/*": ["src/app/traits/*"]
+      "@templates/*": ["src/app/templates/*"]
     }
   },
   "angularCompilerOptions": {

@@ -10,7 +10,10 @@ import { ProductRepository } from '@repositories';
         <box *ngFor="let product of products" [xs]="12" [md]="4">
           <card>
             <card-body>
-              <box display="flex">Test</box>
+              <box display="flex">
+                <box [pt]="3">A</box>
+                <box>B</box>
+              </box>
             </card-body>
           </card>
         </box>

@@ -13,9 +13,12 @@ import { ProductsScreen } from '@screens/products/products.screen';
 import { RowDirective } from '@app/directives/row.directive';
 import { ShoppingCartMolecule } from '@molecules/shopping-cart/shopping-cart.molecule';
 import { ToolbarOrganism } from '@organisms/toolbar/toolbar.organism';
-import { ColDirective } from './directives/col.directive';
-import { ContainerFluidDirective } from './directives/container-fluid.directive';
-import { ContainerMdDirective } from './directives/container-md.directive';
+import { ColDirective } from '@directives/col.directive';
+import { ContainerFluidDirective } from '@directives/container-fluid.directive';
+import { ContainerMdDirective } from '@directives/container-md.directive';
+import { SpacingDirective } from '@directives/spacing.directive';
+import { DisplayDirective } from '@directives/display.directive';
+import { StyleDirective } from './directives/style.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,8 @@ import { ContainerMdDirective } from './directives/container-md.directive';
     CardAtom,
     CardBodyAtom,
     ContainerDirective,
+    SpacingDirective,
+    DisplayDirective,
     DefaultTemplate,
     ProductsScreen,
     RowDirective,
@@ -32,6 +37,7 @@ import { ContainerMdDirective } from './directives/container-md.directive';
     ColDirective,
     ContainerFluidDirective,
     ContainerMdDirective,
+    StyleDirective,
   ],
   imports: [AppRoutingModule, BrowserModule, CommonModule, HttpClientModule],
   bootstrap: [AppComponent],

@@ -1,28 +1,12 @@
 import { Directive, ElementRef } from '@angular/core';
-import { Mixin } from '@app/decorators';
-import {
-  DefaultCssClass,
-  DefaultCssClassTrait,
-} from '@app/traits/default-css-class';
-import { Display, DisplayTrait } from '@app/traits/display';
-import * as CSS from 'csstype';
 
 @Directive({
   selector: '[containerFluid]',
 })
-@Mixin([DefaultCssClassTrait, DisplayTrait])
-export class ContainerFluidDirective implements DefaultCssClass, Display {
-  class: string;
-  display: CSS.Properties['display'];
-
-  initDefaultCssClass: (hostElRef: ElementRef, className: string) => void;
-  initDefaultDisplay: (
-    hostElRef: ElementRef,
-    display?: CSS.Properties['display']
-  ) => void;
-
-  constructor(elRef: ElementRef) {
-    this.initDefaultCssClass(elRef, 'container-fluid');
-    this.initDefaultDisplay(elRef, 'block');
+export class ContainerFluidDirective {
+  constructor(el: ElementRef) {
+    const elementClassList = el.nativeElement.classList;
+    elementClassList.add('container-fluid');
+    elementClassList.add('d-block');
   }
 }
