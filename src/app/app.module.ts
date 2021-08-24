@@ -19,6 +19,8 @@ import { ContainerMdDirective } from '@directives/container-md.directive';
 import { SpacingDirective } from '@directives/spacing.directive';
 import { DisplayDirective } from '@directives/display.directive';
 import { StyleDirective } from './directives/style.directive';
+import { MarginDirective } from './directives/margin.directive';
+import { PaddingDirective } from './directives/padding.directive';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { StyleDirective } from './directives/style.directive';
     ContainerFluidDirective,
     ContainerMdDirective,
     StyleDirective,
+    MarginDirective,
+    PaddingDirective,
   ],
   imports: [AppRoutingModule, BrowserModule, CommonModule, HttpClientModule],
   bootstrap: [AppComponent],
