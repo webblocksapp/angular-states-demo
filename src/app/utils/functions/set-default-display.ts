@@ -1,4 +1,3 @@
-import { overrideCssClass } from './override-css-class';
 import { ElementRef } from '@angular/core';
 import * as CSS from 'csstype';
 
@@ -17,5 +16,5 @@ export const setDefaultDisplay = (
     return;
   }
 
-  overrideCssClass(hostElRef, new RegExp(/^d-/), `d-${display}`);
+  element.classList.add(`d-${display}`);
 };
