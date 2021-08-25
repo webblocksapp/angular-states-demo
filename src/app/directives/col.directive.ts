@@ -1,10 +1,9 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { AfterContentInit, Directive, ElementRef, Input } from '@angular/core';
 import { ColSize } from '@app-types';
 import { overrideCssClass } from '@app/utils/functions';
 
 @Directive({
-  selector: `
-    [xs],
+  selector: `    
     [sm],
     [md],
     [lg],
@@ -13,12 +12,7 @@ import { overrideCssClass } from '@app/utils/functions';
     [col]
   `,
 })
-export class ColDirective {
-  @Input()
-  set xs(value: ColSize) {
-    this.setColClass('col-xs-', value);
-  }
-
+export class ColDirective implements AfterContentInit {
   @Input()
   set sm(value: ColSize) {
     this.setColClass('col-sm-', value);
@@ -49,11 +43,19 @@ export class ColDirective {
     elementClassList.add('col');
   }
 
-  private setColClass(prefix: string, value: any) {
-    overrideCssClass(
-      this.elRef,
-      new RegExp(`/^${prefix}`),
-      `${prefix}${value}`
+  private setColClass(prefix: string, value: ColSize) {
+    overrideCssClass(this.elRef, new RegExp(`^${prefix}`), `${prefix}${value}`);
+  }
+
+  ngAfterContentInit(): void {
+    const elementClassList = this.elRef.nativeElement.classList;
+    const columnClasses = elementClassList.toString().split(' ');
+    const foundColumnClass = columnClasses.find((className: string) =>
+      className.match(/^col-/)
     );
+
+    if (!foundColumnClass) {
+      elementClassList.add('col');
+    }
   }
 }

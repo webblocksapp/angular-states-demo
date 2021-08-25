@@ -93,11 +93,7 @@ export class MarginDirective {
 
   constructor(private elRef: ElementRef) {}
 
-  private setMarginClass(prefix: string, value: any) {
-    overrideCssClass(
-      this.elRef,
-      new RegExp(`/^${prefix}`),
-      `${prefix}${value}`
-    );
+  private setMarginClass(prefix: string, value: MarginSize) {
+    overrideCssClass(this.elRef, new RegExp(`^${prefix}`), `${prefix}${value}`);
   }
 }

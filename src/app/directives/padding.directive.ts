@@ -93,11 +93,7 @@ export class PaddingDirective {
 
   constructor(private elRef: ElementRef) {}
 
-  private setPaddingClass(prefix: string, value: any) {
-    overrideCssClass(
-      this.elRef,
-      new RegExp(`/^${prefix}`),
-      `${prefix}${value}`
-    );
+  private setPaddingClass(prefix: string, value: PaddingSize) {
+    overrideCssClass(this.elRef, new RegExp(`^${prefix}`), `${prefix}${value}`);
   }
 }

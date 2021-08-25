@@ -7,7 +7,7 @@ import { ProductRepository } from '@repositories';
   template: `
     <default-template>
       <box row [spacing]="4">
-        <box *ngFor="let product of products" [xs]="12" [md]="4">
+        <box *ngFor="let product of products" [md]="4">
           <card>
             <card-body>
               <box display="flex">
