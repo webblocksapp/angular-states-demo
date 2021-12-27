@@ -9,7 +9,7 @@ import { ContainerDirective } from '@app/directives/container.directive';
 import { DefaultTemplate } from '@app/templates/default/default.template';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ProductsScreen } from '@screens/products/products.screen';
+import { ProductsScreen, BlankScreen } from '@app/screens';
 import { RowDirective } from '@app/directives/row.directive';
 import { ShoppingCartMolecule } from '@molecules/shopping-cart/shopping-cart.molecule';
 import { ToolbarOrganism } from '@organisms/toolbar/toolbar.organism';
@@ -21,6 +21,7 @@ import { DisplayDirective } from '@directives/display.directive';
 import { StyleDirective } from './directives/style.directive';
 import { MarginDirective } from './directives/margin.directive';
 import { PaddingDirective } from './directives/padding.directive';
+import { TypographyAtom } from './atoms/typography/typography.atom';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { PaddingDirective } from './directives/padding.directive';
     SpacingDirective,
     DisplayDirective,
     DefaultTemplate,
+    BlankScreen,
     ProductsScreen,
     RowDirective,
     ShoppingCartMolecule,
@@ -42,6 +44,7 @@ import { PaddingDirective } from './directives/padding.directive';
     StyleDirective,
     MarginDirective,
     PaddingDirective,
+    TypographyAtom,
   ],
   imports: [AppRoutingModule, BrowserModule, CommonModule, HttpClientModule],
   bootstrap: [AppComponent],

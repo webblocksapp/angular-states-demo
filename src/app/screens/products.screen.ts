@@ -6,13 +6,18 @@ import { ProductRepository } from '@repositories';
   selector: 'products',
   template: `
     <default-template>
-      <box row [spacing]="4">
+      <div *ngIf="loading">Loading...</div>
+      <box *ngIf="!loading" row [spacing]="4">
         <box *ngFor="let product of products" [md]="4">
           <card>
             <card-body>
               <box display="flex">
-                <box>A</box>
-                <box>B</box>
+                <ul>
+                  <li>{{ product.id }}</li>
+                  <li>{{ product.name }}</li>
+                  <li>{{ product.price }}</li>
+                  <li>{{ product.location }}</li>
+                </ul>
               </box>
             </card-body>
           </card>
@@ -27,7 +32,9 @@ export class ProductsScreen {
   loading: boolean;
   error: string;
 
-  constructor(private productRepository: ProductRepository) {
+  constructor(private productRepository: ProductRepository) {}
+
+  ngOnInit() {
     this.productRepository.subscribe(({ products, loading, error }) => {
       this.products = products;
       this.loading = loading;

@@ -13,10 +13,9 @@ import { Component } from '@angular/core';
       </button>
       <ul class="dropdown-menu">
         <li>
-          <a class="dropdown-item" href="#">Test</a>
+          <a class="dropdown-item" routerLink="/">Home</a>
         </li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><a class="dropdown-item" routerLink="/blank">Blank</a></li>
       </ul>
     </box>
   `,

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '@interfaces';
 import { ProductApi } from '@apis';
+import { getErrorMessage, findInArray } from '@functions';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 interface ProductRepositoryState {
@@ -33,13 +34,16 @@ export class ProductRepository {
     });
   }
 
+  /**
+   * Async functions for API calls and state updates
+   */
   async findAll() {
     try {
       this.state.loading = true;
       this.emitChange();
       this.state.products = await this.productApi.findAll().toPromise();
     } catch (error) {
-      this.state.error = error;
+      this.state.error = getErrorMessage(error);
     } finally {
       this.state.loading = false;
       this.emitChange();
@@ -60,6 +64,13 @@ export class ProductRepository {
   async delete(id: number) {
     this.state.products = this.state.products.filter((item) => item.id !== id);
     this.emitChange();
+  }
+
+  /**
+   * Sync functions for selecting pieces of state
+   */
+  selectProduct(filter: Partial<Product>) {
+    return findInArray<Product>(this.state.products, filter);
   }
 
   unsubscribe() {

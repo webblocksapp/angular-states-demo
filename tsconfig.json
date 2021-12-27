@@ -23,6 +23,7 @@
       "@app-types": ["src/app/types/index"],
       "@app/*": ["src/app/*"],
       "@atoms/*": ["src/app/atoms/*"],
+      "@constants": ["src/app/constants/index"],
       "@decorators": ["src/app/decorators/index"],
       "@directives/*": ["src/app/directives/*"],
       "@env": ["src/environments/environment"],
